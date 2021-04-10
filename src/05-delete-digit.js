@@ -9,8 +9,16 @@
  * For n = 152, the output should be 52
  *
  */
-function deleteDigit(/* n */) {
-  throw new Error('Not implemented');
+function deleteDigit(n) {
+  let max = 0;
+  const strN = String(n);
+  for (let i = 0; i < strN.length; i++) {
+    // создаем число на 1 цифру меньше с текущем индексом
+    const curNum = Number(strN.slice(0, i) + strN.slice(i + 1));
+    //  сравниваем все такие числа друг с другом
+    max = Math.max(max, curNum);
+  }
+  return max;
 }
 
 module.exports = deleteDigit;

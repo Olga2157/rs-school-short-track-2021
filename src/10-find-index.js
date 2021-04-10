@@ -11,8 +11,32 @@
  * For ([1, 2, 3], 2) should return 1
  *
  */
-function findIndex(/* array, value */) {
-  throw new Error('Not implemented');
+function findIndex(array, value) {
+  let lo = 0;
+  let hi = array.length - 1;
+  while (lo <= hi) {
+    if (lo === hi) {
+      if (array[lo] === value) {
+        return lo;
+      }
+    }
+    // чтобы избежать переполнения берем не статистическое среднее,
+    // а редактированную формулу
+    const med = Math.floor(lo + (hi - lo) / 2);
+    if (array[med] === value) {
+      return med;
+    }
+    // если попало в правую половину - сдвигаем мин на след значение от медианы
+    if (array[med] < value) {
+      lo = med + 1;
+    } else {
+      // если попало в левую половину - сдвигаем макс на пред значение от медианы
+      hi = med - 1;
+    }
+  }
+  return -1;
 }
 
 module.exports = findIndex;
+
+// бинарный поиск

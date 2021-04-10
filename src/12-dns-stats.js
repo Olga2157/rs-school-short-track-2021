@@ -20,8 +20,28 @@
  * }
  *
  */
-function getDNSStats(/* domains */) {
-  throw new Error('Not implemented');
+function getDNSStats(domains) {
+  const res = {};
+  // object - key: сабдомен; value: newCounter
+  for (let i = 0; i < domains.length; i++) {
+    // создаем массив сабдоменов
+    const subDomains = domains[i].split('.').reverse();
+    let prevSubDomain = '.';
+    for (let j = 0; j < subDomains.length; j++) {
+      // если сабдомен есть в объекте
+      if (res[prevSubDomain + subDomains[j]]) {
+        // увеличиваем счетчик на 1
+        const newCounter = res[prevSubDomain + subDomains[j]] + 1;
+        // помещаем новое значение счетчика в объект по value (newCounter)
+        res[prevSubDomain + subDomains[j]] = newCounter;
+      } else {
+        // если нет в объекте - добавляем с value 1
+        res[prevSubDomain + subDomains[j]] = 1;
+      }
+      prevSubDomain += `${subDomains[j]}.`;
+    }
+  }
+  return res;
 }
 
 module.exports = getDNSStats;

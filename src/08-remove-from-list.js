@@ -16,9 +16,30 @@
  *   this.next = null;
  * }
  */
+const ListNode = require('../extensions/list-node');
 
-function removeKFromList(/* l, k */) {
-  throw new Error('Not implemented');
+function removeKFromList(l, k) {
+  // вводим доп временный элемент с позицией перед первым элементом
+  // на случай, если первый элемент совпадет с тем, который надо исключить
+  const fakeHead = new ListNode(-1);
+  // для него следующий - это первый элемент - l
+  fakeHead.next = l;
+  //
+  let curEl = l;
+  let prevEl = fakeHead;
+  // пока не последний элемент
+  while (curEl !== null) {
+    // если элемент совпадает с тем, что надо исключить - разрываем связь,
+    // с предыдущего перекидываем на через него;
+    if (curEl.value === k) {
+      prevEl.next = curEl.next;
+    } else {
+      prevEl = curEl;
+    }
+    // переходим на шаг вперед к следующему значению
+    curEl = curEl.next;
+  }
+  return fakeHead.next;
 }
 
 module.exports = removeKFromList;
