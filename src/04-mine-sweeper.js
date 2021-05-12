@@ -33,25 +33,22 @@ function minesweeper(matrix) {
         if (matrix[i - 1] && matrix[i - 1][j - 1] === true) {
           res[i][j]++;
         }
-        if (matrix[i][j - 1] === true) {
-          res[i][j]++;
-        }
-        if (matrix[i + 1] && matrix[i + 1][j - 1] === true) {
-          res[i][j]++;
-        }
-        if (matrix[i - 1] && matrix[i - 1][j] === true) {
-          res[i][j]++;
-        }
-        if (matrix[i][j] === true) {
-          res[i][j]++;
-        }
-        if (matrix[i + 1] && matrix[i + 1][j] === true) {
+         if (matrix[i - 1] && matrix[i - 1][j] === true) {
           res[i][j]++;
         }
         if (matrix[i - 1] && matrix[i - 1][j + 1] === true) {
           res[i][j]++;
         }
+        if (matrix[i][j - 1] === true) {
+          res[i][j]++;
+        }
         if (matrix[i][j + 1] === true) {
+          res[i][j]++;
+        }
+        if (matrix[i + 1] && matrix[i + 1][j - 1] === true) {
+          res[i][j]++;
+        } 
+        if (matrix[i + 1] && matrix[i + 1][j] === true) {
           res[i][j]++;
         }
         if (matrix[i + 1] && matrix[i + 1][j + 1] === true) {
@@ -62,8 +59,7 @@ function minesweeper(matrix) {
   }
   return res;
 }
-// обращаемся к строке - если ее нет(i-1, i+1) - то ошибка
-// => добавляем в код условие существования строки
-// если есть строка, но обращаемся к несуществующему левее или правее (j-1,j+1) - то underfined
-// underfined === true => false и ничего не происходит, идем дальше
+// 1 проверка: обращаемся к строке - если ее нет(i-1, i+1) - то ошибка => добавляем в код условие существования строки
+// 2 проверка: случаи, когда есть строка, но обращаемся к несуществующему левее или правее (j-1,j+1) - вернется underfined
+// (=== true) => для underfined - false и ничего не происходит, идем дальше; => true - бомба - инкрементируем
 module.exports = minesweeper;
