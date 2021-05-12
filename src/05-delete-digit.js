@@ -15,6 +15,7 @@ function deleteDigit(n) {
   for (let i = 0; i < strN.length; i++) {
     // создаем число на 1 цифру меньше с текущем индексом
     const curNum = Number(strN.slice(0, i) + strN.slice(i + 1));
+//    slice - метод для получения подстроки. Объединяем левую часть до i и правую часть после i
     //  сравниваем все такие числа друг с другом
     max = Math.max(max, curNum);
   }
