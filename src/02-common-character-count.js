@@ -20,6 +20,7 @@ function getCommonCharacterCount(s1, s2) {
     arr1[i] = 0;
     arr2[i] = 0;
   }
+//   инициализация массивов с количеством встреченных букв. Размерность: 26. Пример, text - [0,0,0,0,1,0,0,0,0,0,...,0,0,0,0,0,2,0,0,0,1,0,0]
   for (let i = 0; i < lowerS1.length; i++) {
     arr1[lowerS1.charCodeAt(i) - 97]++;
   }
