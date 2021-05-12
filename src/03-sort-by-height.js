@@ -18,11 +18,28 @@ function sortByHeight(arr) {
     }
   }
   positiveArray = positiveArray.sort((num1, num2) => num1 - num2);
+  
+  // Метод sort() на месте сортирует элементы массива и возвращает отсортированный массив.
+//   positiveArray = positiveArray.sort(compare);
+// function compare(num1, num2) {
+// //num1-num2 аналогично логике:
+//   if (num1 < num2) {
+//     return -1;
+//   }
+//   if (num1 > num2) {
+//     return 1;
+//   }
+//   // num1 = num2
+//   return 0;
+// }
+// -1: num1 num2, 1: num2 num1, 0: оставит числа в своей же последовательности в отсортированном массиве
+  
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === -1) {
       sortArr.push(arr[i]);
     } else {
       sortArr.push(positiveArray.shift());
+//       shift берет первый элемент и удаляет его
     }
   }
   return sortArr;
