@@ -15,14 +15,17 @@ class Stack {
     if (!this.arr) {
       this.arr = [];
     }
+//     массив - это переменная класса Stack, в конец массива записываем текущий элемент
     this.arr.push(element);
   }
 
   pop() {
+//     извлекаем и удаляем последний элемент из массива
     return this.arr.pop();
   }
 
   peek() {
+//     отображаем последний элемент массива
     return this.arr[this.arr.length - 1];
   }
 }
