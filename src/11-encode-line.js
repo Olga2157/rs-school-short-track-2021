@@ -43,3 +43,6 @@ function encodeLine(str) {
 }
 
 module.exports = encodeLine;
+
+// str.length - 1 = индекс последнего элемента
+// str[str.length - 1] - последняя буква
