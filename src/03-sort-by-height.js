@@ -17,6 +17,9 @@ function sortByHeight(arr) {
       positiveArray.push(arr[i]);
     }
   }
+//   alternative way for getting positiveArray:
+//   const positiveArr = arr.filter((el) => el !== -1);
+  
   positiveArray = positiveArray.sort((num1, num2) => num1 - num2);
   
   // Метод sort() на месте сортирует элементы массива и возвращает отсортированный массив.
