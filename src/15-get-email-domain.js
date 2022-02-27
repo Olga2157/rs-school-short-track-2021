@@ -18,5 +18,11 @@ function getEmailDomain(email) {
   }
   return currStr;
 }
+// alternative solution:
+function getEmailDomain(email) {
+  const emailParts = email.split('@');
+  const domain = emailParts[1];
+  return domain;
+}
 
 module.exports = getEmailDomain;
